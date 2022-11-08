@@ -15,7 +15,22 @@ public class Cafe extends Building{
     
     // The number of cups remaining in inventory
     private int nCups; 
-    
+ 
+    public Cafe() {
+        this("<Name Unknown>", "<Address Unknown>", 1);
+    }
+
+    /* Overloaded constructor with address only */
+    public Cafe(String address) {
+        this(); // Call default constructor
+        this.address = address; // Override address
+    }
+
+    /* Overloaded constructor with name, address, and nfloors */
+    public Cafe(String name, String address) {
+        this(name, address, 1); // Call full constructor with hard-coded # floors
+    }   
+
 /* this will allow us to inherit attributes from superclass and add our own
  */    
     public Cafe(String name, String address, int nFloors) {
@@ -54,6 +69,10 @@ public class Cafe extends Building{
         this.nCreams -= nCreams;
 }
 
+/*In order to allow the showOptions method to take in the attributes made in library, we must add them below with n inside so that it knows to pass something into them. 
+ */
+public void showOptions() {
+    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown() \n + goToFloor(n) \n + sellCoffee(n) \n + restock(n)");}
     public static void main(String[] args) {
         new Cafe("Compass Cafe", "7 Neilson Drive, Northampton, MA 01063", 5);
     }
